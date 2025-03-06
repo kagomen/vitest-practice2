@@ -9,5 +9,9 @@ export default defineConfig({
     setupFiles: ["./setup.ts"],
     include: ["**/*.{test,spec}.{js,jsx,ts,tsx}"],
     exclude: ["node_modules", ".next"],
+    coverage: {
+      reporter: ["text", "json", "html"],
+    },
+    globals: true,
   },
 })
