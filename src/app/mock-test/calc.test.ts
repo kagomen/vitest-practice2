@@ -1,4 +1,4 @@
-import { add, sub } from "./calc"
+import { add, sub } from "./calc.ts"
 
 vi.mock("./calc.ts", async (importOriginal) => {
   const mod = await importOriginal<typeof import("./calc.ts")>()

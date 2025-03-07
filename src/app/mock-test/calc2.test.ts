@@ -1,4 +1,4 @@
-import { add } from "./calc"
+import { add } from "./calc.ts"
 
 // add = vi.fn()
 
@@ -11,6 +11,8 @@ vi.mock(import("./calc.ts"), { spy: true })
 
 describe("", () => {
   test("", () => {
-    expect(add(1, 2)).toBe(3)
+    add(1, 2)
+    expect(add(1, 2)).toBe(3) // spy関連のアサーションではないので、mockしなくてもテストが通る
+    expect(add).toHaveBeenCalledWith(1, 2) // spy関連のアサーションなので、spyオプションをtrueにしないとエラーになる
   })
 })

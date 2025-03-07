@@ -4,8 +4,11 @@ import { defineConfig } from "vitest/config"
 
 export default defineConfig({
   plugins: [tsconfigPaths(), react()],
+  define: {
+    "process.env": JSON.stringify({}),
+  },
   test: {
-    environment: "jsdom",
+    // environment: "jsdom",
     setupFiles: ["./setup.ts"],
     include: ["**/*.{test,spec}.{js,jsx,ts,tsx}"],
     exclude: ["node_modules", ".next"],
@@ -13,5 +16,11 @@ export default defineConfig({
       reporter: ["text", "json", "html"],
     },
     globals: true,
+    browser: {
+      provider: "playwright", // or 'webdriverio'
+      enabled: true,
+      // at least one instance is required
+      instances: [{ browser: "chromium" }],
+    },
   },
 })
