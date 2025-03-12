@@ -8,7 +8,6 @@ export default defineConfig({
     "process.env": JSON.stringify({}),
   },
   test: {
-    // environment: "jsdom",
     setupFiles: ["./setup.ts"],
     include: ["**/*.{test,spec}.{js,jsx,ts,tsx}"],
     exclude: ["node_modules", ".next"],
@@ -16,10 +15,10 @@ export default defineConfig({
       reporter: ["text", "json", "html"],
     },
     globals: true,
+    // environment: "jsdom",
     browser: {
-      provider: "playwright", // or 'webdriverio'
+      provider: "playwright",
       enabled: true,
-      // at least one instance is required
       instances: [{ browser: "chromium" }],
     },
   },
